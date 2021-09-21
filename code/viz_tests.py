@@ -27,7 +27,8 @@ def draw_test(data,test_no):
       item_marker+=1
 
   test_no = "{0:09d}".format(test_no)
-  img.save("file_" +test_no+".png")
+  img.save("file_" + test_no + ".png")
+  print("Saved file_" + test_no + ".png ")
 
 if __name__ == "__main__":
 
