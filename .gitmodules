@@ -1,0 +1,4 @@
+[submodule "code/AFL-mut-viz/AFL"]
+	path = code/AFL-mut-viz/AFL
+	url = git@github.com:AftabHussain/AFL.git
+	branch = mut-viz
