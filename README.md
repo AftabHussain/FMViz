@@ -30,3 +30,93 @@ This patch has been added to a forked version of AFL [here](https://github.com/A
 ## Sample image representation of a testcase
 ![sample-test-image](https://github.com/AftabHussain/afl-test-viz/blob/main/figs/test-bytes.png)
 
+## Using FMViz
+Instructions to fuzz libxml2 using FMViz are provided below.
+
+### Environment Setup
+
+**FMViz**
+
+In any directory, clone the FMViz repository:
+
+```git clone --recursive git@github.com:AftabHussain/afl-test-viz.git```
+
+Build and install AFL, patched with FMViz’s Test Input
+Color Representation Generator component, as shown below:
+
+```cd afl-test-viz/code/AFL-mut-viz/AFL && make -j32 && make install```
+
+**libxml2**
+
+Build the test subject (libxml2) with AFL’s
+compiler (```afl-gcc```), which prepares libxml2 binaries as fuzzing targets. 
+
+Get libxml2 as follows in a folder outside ```afl-test-viz``` directory:
+
+```git clone https://github.com/GNOME/libxml2.git && cd libxml2 && git checkout 1fbcf40```
+
+Configure and build libxml2:
+
+```cd libxml2 && export CC=afl-gcc && ./configure && make -j32```
+
+### Generate Color Representations of Test Inputs
+
+Invoke the first part of FMViz, the augmented AFL fuzzer, which pro-
+duces hex color representations of test inputs generated while fuzzing the
+test subject. Here, we fuzz ```xmllint``` binary from the libxml2 library. 
+
+Enter the libxml2 folder, create an input folder (input), and place in it any XML file
+as a test input:
+
+```cd libxml2 && mkdir input && cp [path to xml file] input/```
+
+Then start fuzzing:
+
+```export AFL SKIP CPUFREQ=1 && export LD LIBRARY PATH=./.libs/ && afl-fuzz -i input/ -o output/ -- ./.libs/xmllint -o /dev/null @@```
+
+Terminate fuzzing anytime using Ctrl+C – on termination,
+all results are saved in the output folder, output. ```tests_generated``` contains color representations of all the tests created
+by the fuzzer.
+
+### Generate Images from Color Representations of Test Inputs
+
+Process the color dump file (```tests_generated```). Place this file along with the Image Generation program
+(```code/viz_tests.py```) in a separate directory:
+
+```
+mkdir process color rep
+cp libxml2/output/tests generated process_color_rep
+cp afl test viz/code/viz tests.py process_color_rep
+```
+
+Generate the images:
+
+```cd process_color_rep/ && python viz tests.py```
+
+PNG images for all tests that are represented in
+the color dump file are now in ```process_color_rep``` directory:
+
+```
+ls | xargs -n 1
+.
+.
+.
+file_000005564.png
+file_000005565.png
+file_000005566.png
+file_000005567.png
+file_000005568.png
+file_000005569.png
+file_000005570.png
+file_000005571.png
+file_000005572.png
+.
+.
+```
+
+The naming of the input files corresponds to the order in which their corresponding test inputs were generated during
+fuzzing. To produce a time-lapse video of the images, we use [Simple Screen Recorder](https://www.maartenbaert.be/simplescreenrecorder/), 
+which can be invoked by the command
+```simplescreenrecorder``` on the terminal. (You may start recording using it, and toggle over multiple images on Image Viewer 
+by holding the left/right arrow key to capture mutation transitions.)
+
