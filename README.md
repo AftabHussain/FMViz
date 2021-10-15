@@ -30,7 +30,7 @@ This patch has been added to a forked version of AFL [here](https://github.com/A
 ## Sample image representation of a testcase
 ![sample-test-image](https://github.com/AftabHussain/afl-test-viz/blob/main/figs/test-bytes.png)
 
-## Using FMViz
+## Usage
 Instructions to fuzz libxml2 using FMViz are provided below.
 
 ### Environment Setup
