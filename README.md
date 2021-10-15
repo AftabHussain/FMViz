@@ -31,17 +31,17 @@ This patch has been added to a forked version of AFL [here](https://github.com/A
 ![sample-test-image](https://github.com/AftabHussain/afl-test-viz/blob/main/figs/test-bytes.png)
 
 ## Usage
-Instructions to fuzz libxml2 using FMViz are provided below.
+Instructions to fuzz libxml2 using the visualization tool are provided below.
 
 ### Environment Setup
 
-**FMViz**
+**The visualization tool**
 
-In any directory, clone the FMViz repository:
+In any directory, clone the repository:
 
 ```git clone --recursive git@github.com:AftabHussain/afl-test-viz.git```
 
-Build and install AFL, patched with FMViz’s Test Input
+Build and install AFL, patched with the tool’s Test Input
 Color Representation Generator component, as shown below:
 
 ```cd afl-test-viz/code/AFL-mut-viz/AFL && make -j32 && make install```
@@ -61,7 +61,7 @@ Configure and build libxml2:
 
 ### Generate Color Representations of Test Inputs
 
-Invoke the first part of FMViz, the augmented AFL fuzzer, which pro-
+Invoke the first part of the visualization tool, the augmented AFL fuzzer, which pro-
 duces hex color representations of test inputs generated while fuzzing the
 test subject. Here, we fuzz ```xmllint``` binary from the libxml2 library. 
 
