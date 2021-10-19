@@ -86,9 +86,9 @@ Process the color dump file (```tests_generated```). Place this file along with 
 (```code/viz_tests.py```) in a separate directory:
 
 ```
-mkdir process color rep
+mkdir process_color_rep
 cp libxml2/output/tests generated process_color_rep
-cp afl test viz/code/viz tests.py process_color_rep
+cp afl-test-viz/code/viz_tests.py process_color_rep
 ```
 
 Generate the images:
