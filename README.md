@@ -59,7 +59,7 @@ Get libxml2 as follows in a folder outside ```afl-test-viz``` directory:
 
 Configure and build libxml2:
 
-```cd libxml2 && export CC=afl-gcc && ./configure && make -j32```
+```cd libxml2 && export CC=afl-gcc && ./autogen.sh && make -j32```
 
 ### Generate Color Representations of Test Inputs
 
