@@ -74,7 +74,7 @@ as a test input:
 
 Then start fuzzing:
 
-```export AFL_SKIP_CPUFREQ=1 && export LD LIBRARY PATH=./.libs/ && afl-fuzz -i input/ -o output/ -- ./.libs/xmllint -o /dev/null @@```
+```export AFL_SKIP_CPUFREQ=1 && export LD_LIBRARY_PATH=./.libs/ && afl-fuzz -i input/ -o output/ -- ./.libs/xmllint -o /dev/null @@```
 
 Terminate fuzzing anytime using Ctrl+C – on termination,
 all results are saved in the output folder, output. ```tests_generated``` contains color representations of all the tests created
