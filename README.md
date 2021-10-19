@@ -70,7 +70,7 @@ test subject. Here, we fuzz ```xmllint``` binary from the libxml2 library.
 Enter the libxml2 folder, create an input folder (input), and place in it any XML file
 as a test input:
 
-```cd libxml2 && mkdir input && cp [path to xml file] input/```
+```cd libxml2 && mkdir input && cp [path_to_xml_file] input/```
 
 Then start fuzzing:
 
@@ -93,7 +93,7 @@ cp afl test viz/code/viz tests.py process_color_rep
 
 Generate the images:
 
-```cd process_color_rep/ && python viz tests.py```
+```cd process_color_rep/ && python viz_tests.py```
 
 PNG images for all tests that are represented in
 the color dump file are now in ```process_color_rep``` directory:
