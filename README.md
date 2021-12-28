@@ -1,4 +1,4 @@
-# afl-test-viz
+# FMViz
 *A project on visualizing tests generated in AFL during fuzzing.*
 
 Current Release: [v1.0](https://github.com/AftabHussain/afl-test-viz/releases/tag/v1.0)
